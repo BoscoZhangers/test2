@@ -14,7 +14,7 @@ export default function App() {
       {/* Navbar */}
       <div 
         data-darwin-id="nav-main" 
-        style={{ position: 'absolute', left: 0, top: 0, width: 450, height: 64, backgroundColor: '#ffffff', display: 'flex', alignItems: 'center', padding: '0 24px', boxSizing: 'border-box' }}
+        style={{ position: 'absolute', left: 0, top: 0, width: 450, height: 64, backgroundColor: '#ffffff', display: 'flex', alignItems: 'center', paddingLeft: 0, paddingRight: 0, paddingLeft: 24, paddingRight: 24, boxSizing: 'border-box' }}
       >
         <h1 style={{ fontWeight: 'bold', margin: 0 }}>Startup.io</h1>
       </div>
