@@ -3,6 +3,14 @@ import React from 'react';
 
 export default function App() {
   return (
+    <div>
+      <button>Click Me</button>
+    </div>
+  )
+}
+
+export default function App() {
+  return (
     <div style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden', backgroundColor: 'white' }}>
       
       {/* The Parser looks for <nav> tags */}
