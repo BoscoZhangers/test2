@@ -1,44 +1,62 @@
-// src/DarwinTracker.jsx (In the user's repo)
-import { useEffect } from 'react';
+// src/DarwinTracker.jsx
+import { useEffect, useMemo } from 'react';
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, onDisconnect, set, increment, push } from "firebase/database";
 
-// 1. USE THE SAME FIREBASE CONFIG AS YOUR DASHBOARD
+// ⚠️ CRITICAL: You must replace these with your REAL strings for the test site to work.
+// The test site does not have access to your .env files by default.
 const firebaseConfig = {
-  // ... your firebase config keys ...
-  // In a real product, these would be public keys or proxied via an API
+  apiKey: "AIzaSyCa-wRwPRlqvJzbVOpU88N-kOWXt5OzLuE",          // <--- PASTE REAL KEY HERE
+  authDomain: "darwin-hackathon.firebaseapp.com",            // <--- PASTE REAL DOMAIN HERE
+  databaseURL: "https://darwin-hackathon-default-rtdb.firebaseio.com/",           // <--- PASTE REAL DB URL HERE (Must start with https://)
+  projectId: "darwin-hackathon",             // <--- PASTE REAL PROJECT ID HERE
+  storageBucket: "darwin-hackathon.firebasestorage.app",         // <--- PASTE REAL BUCKET HERE
+  messagingSenderId: "1019141547180",     // <--- PASTE REAL SENDER ID HERE
+  appId: "1:1019141547180:web:9c8bb0826f8de52a82ab09"                  // <--- PASTE REAL APP ID HERE
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 export default function DarwinTracker({ repoId }) {
+  
+  // --- 1. STABLE SESSION ID ---
+  // We use useMemo to ensure we don't generate a new ID on every render (Strict Mode fix)
+  const sessionId = useMemo(() => {
+    let stored = sessionStorage.getItem('darwin_session_id');
+    if (!stored) {
+      stored = Math.random().toString(36).substr(2, 9);
+      sessionStorage.setItem('darwin_session_id', stored);
+    }
+    return stored;
+  }, []);
+
   useEffect(() => {
-    // --- 1. TRACK ACTIVE USERS ---
-    // Generate a random session ID for this visitor
-    const sessionId = Math.random().toString(36).substr(2, 9);
+    if (!repoId) return;
+
+    // --- 2. TRACK ACTIVE USERS ---
+    // Use the stable sessionId we created above
     const userRef = ref(db, `swarm/${repoId}/active_sessions/${sessionId}`);
 
     // Set user as active
     set(userRef, { last_seen: Date.now(), x: Math.random(), y: Math.random() });
 
-    // If they close the tab, remove them automatically (Magic of Firebase)
+    // If they close the tab, remove them automatically
     onDisconnect(userRef).remove();
 
-    // --- 2. TRACK CLICK EVENTS ---
+    // --- 3. TRACK CLICK EVENTS ---
     const handleClick = (e) => {
-      // Check if the clicked element has a 'darwin-id' or specific tag
-      // We use the 'data-darwin-id' attribute which we can add to elements
       const target = e.target.closest('[data-darwin-id]'); 
       
       if (target) {
         const elementId = target.getAttribute('data-darwin-id');
         
-        // Increment the click count for this specific button
+        // Increment the click count
         const clickRef = ref(db, `swarm/${repoId}/clicks/${elementId}`);
         set(clickRef, increment(1));
         
-        // Optional: Push a "particle" event for the 3D scene
+        // Optional: Push a "particle" event
         push(ref(db, `swarm/${repoId}/events`), {
           type: 'click',
           elementId: elementId,
@@ -49,7 +67,7 @@ export default function DarwinTracker({ repoId }) {
 
     window.addEventListener('click', handleClick);
     return () => window.removeEventListener('click', handleClick);
-  }, [repoId]);
+  }, [repoId, sessionId]); // Add sessionId to dependencies
 
-  return null; // This component renders nothing visual
+  return null;
 }

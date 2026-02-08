@@ -1,5 +1,5 @@
 import React from 'react';
-import DarwinTracker from './DarwinTracker'; // <--- THIS IS REQUIRED FOR TRACKING
+import DarwinTracker from './DarwinTracker'; 
 
 export default function App() {
   return (
@@ -7,7 +7,7 @@ export default function App() {
       
       {/* 1. INITIALIZE THE TRACKER */}
       {/* Replace 'BoscoZhangers_darwin-test-site' with your unique repo ID */}
-      <DarwinTracker repoId="BoscoZhangers_darwin-test-site" />
+      <DarwinTracker repoId="boscozhangers_test2" />
 
       {/* 2. ADD 'data-darwin-id' TO ELEMENTS YOU WANT TO TRACK */}
       
