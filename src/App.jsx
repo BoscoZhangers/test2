@@ -22,7 +22,7 @@ export default function App() {
       {/* Hero Text */}
       <h1 
         data-darwin-id="hero-text"
-        style={{ position: 'absolute', left: 40, top: 140, width: 350, height: 100, fontSize: '3.5rem', color: '#000', margin: 0, lineHeight: 1 }}
+        style={{ position: 'absolute', left: 40, top: 140, width: 3500, height: 100, fontSize: '3.5rem', color: '#000', margin: 0, lineHeight: 1 }}
       >
         Build Faster.
       </h1>
