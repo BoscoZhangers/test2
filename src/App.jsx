@@ -11,7 +11,7 @@ export default function App() {
 
       {/* 2. ADD 'data-darwin-id' TO ELEMENTS YOU WANT TO TRACK */}
       
-      {/* Navbar */}
+      {/* Navbar */} 
       <div 
         data-darwin-id="nav-main" 
         style={{ position: 'absolute', left: 0, top: 0, width: 450, height: 64, backgroundColor: '#ffffff', display: 'flex', alignItems: 'center', paddingLeft: 0, paddingRight: 0, paddingLeft: 24, paddingRight: 24, boxSizing: 'border-box' }}
