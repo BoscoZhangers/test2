@@ -2,55 +2,117 @@ import React from 'react';
 import DarwinTracker from './DarwinTracker'; 
 
 export default function App() {
+  const containerStyle = {
+    fontFamily: '-apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+    width: '100vw',
+    minHeight: '100vh',
+    margin: 0,
+    padding: 0,
+    backgroundColor: '#ffffff',
+    color: '#1a1a1a',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    overflowX: 'hidden'
+  };
+
+  const navStyle = {
+    width: '100%',
+    maxWidth: '1200px',
+    height: '72px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '0 24px',
+    boxSizing: 'border-box',
+    borderBottom: '1px solid #f0f0f0'
+  };
+
+  const heroContainerStyle = {
+    width: '100%',
+    maxWidth: '1200px',
+    padding: '80px 24px 40px 24px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
+    boxSizing: 'border-box'
+  };
+
+  const heroTextStyle = {
+    fontSize: 'clamp(3rem, 8vw, 5rem)',
+    fontWeight: '800',
+    letterSpacing: '-0.04em',
+    lineHeight: '1.1',
+    margin: '0 0 24px 0',
+    color: '#000'
+  };
+
+  const descriptionStyle = {
+    fontSize: '1.15rem',
+    lineHeight: '1.6',
+    color: '#666',
+    maxWidth: '540px',
+    margin: '0 0 32px 0'
+  };
+
+  const primaryBtnStyle = {
+    padding: '14px 28px',
+    backgroundColor: '#000',
+    borderRadius: '10px',
+    color: '#fff',
+    fontSize: '1rem',
+    fontWeight: '600',
+    border: 'none',
+    cursor: 'pointer',
+    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+  };
+
+  const secondaryBtnStyle = {
+    marginTop: '48px',
+    padding: '16px 36px',
+    backgroundColor: '#1bb556',
+    borderRadius: '12px',
+    color: 'white',
+    fontSize: '1.1rem',
+    fontWeight: '600',
+    border: 'none',
+    cursor: 'pointer',
+    boxShadow: '0 10px 15px -3px rgba(27, 181, 86, 0.3)'
+  };
+
   return (
-    <div style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden', backgroundColor: 'white' }}>
-      
-      {/* 1. INITIALIZE THE TRACKER */}
-      {/* Replace 'BoscoZhangers_darwin-test-site' with your unique repo ID */}
+    <div style={containerStyle}>
       <DarwinTracker repoId="boscozhangers_test2" />
 
-      {/* 2. ADD 'data-darwin-id' TO ELEMENTS YOU WANT TO TRACK */}
-      
-      {/* Navbar */} 
-      <div 
-        data-darwin-id="nav-main" 
-        style={{ position: 'absolute', left: 0, top: 0, width: 450, height: 64, backgroundColor: '#ffffff', display: 'flex', alignItems: 'center', paddingLeft: 0, paddingRight: 0, paddingLeft: 24, paddingRight: 24, boxSizing: 'border-box' }}
-      >
-        <h1 style={{ fontWeight: 'bold', margin: 0 }}>Startup.io</h1>
-      </div>
+      {/* Navbar - Slim and professional */}
+      <nav data-darwin-id="nav-main" style={navStyle}>
+        <h1 style={{ fontSize: '1.5rem', fontWeight: '800', letterSpacing: '-0.02em', margin: 0 }}>Startup.io</h1>
+        <div style={{ display: 'flex', gap: '32px', fontSize: '0.9rem', fontWeight: '500', color: '#666' }}>
+          <span>Product</span>
+          <span>Features</span>
+          <span>Pricing</span>
+        </div>
+      </nav>
 
-      {/* Hero Text */}
-      <h1 
-        data-darwin-id="hero-text"
-        style={{ position: 'absolute', left: 40, top: 140, width: 350, height: 100, fontSize: '3.5rem', color: '#000', margin: 0, lineHeight: 1 }}
-      >
-        Build Faster.
-      </h1>
+      {/* Hero Content - Focused in the upper half */}
+      <header style={heroContainerStyle}>
+        <h1 data-darwin-id="hero-text" style={heroTextStyle}>
+          Build Faster.
+        </h1>
 
-      {/* CTA Button */}
-      <button 
-        data-darwin-id="btn-cta"
-        style={{ position: 'absolute', left: 40, top: 240, width: 140, height: 48, backgroundColor: '#000', borderRadius: '8px', color: 'white', fontWeight: 'bold', border: 'none', cursor: 'pointer' }}
-      >
-        Get Started
-      </button>
-      
-      <div
-        data-darwin-id="description"
-        style={{ position: 'absolute', left: 40, top: 300, width: 400, height: 48, backgroundColor: '#ffffff', borderRadius: '8px', color: 'black', border: 'none', cursor: 'pointer' }}
-      >
-        <h5>
-          Some small details to describe what this project is about. We make changes to the properties of web components to see how simulated users will react.
-        </h5>
-      </div>
+        <div data-darwin-id="description" style={descriptionStyle}>
+          Optimize your web components with real-time feedback loops. We analyze simulated user interactions to help you make data-driven design decisions.
+        </div>
 
-      <button
-        data-darwin-id="btn-cta-2"
-        style={{ position: 'absolute', left: 120, top: 470, width: 240, height: 60, backgroundColor: '#1bb556', borderRadius: '12px', color: 'white', fontWeight: 'bold', border: 'none', cursor: 'pointer'}}
-      >
-        Take the change today.
-      </button>
+        <button data-darwin-id="btn-cta" style={primaryBtnStyle}>
+          Get Started
+        </button>
 
+        <button data-darwin-id="btn-cta-2" style={secondaryBtnStyle}>
+          Take the change today
+        </button>
+      </header>
     </div>
   );
 }
