@@ -35,13 +35,16 @@ export default function App() {
         Get Started
       </button>
       
-      <h4>
+      <h4
+        data-darwin-id="description"
+        style={{ position: 'absolute', left: 40, top: 300, width: 140, height: 48, backgroundColor: '#000', borderRadius: '8px', color: 'white', fontWeight: 'bold', border: 'none', cursor: 'pointer' }}
+      >
         Some small details to describe what this project is about. We make changes to the properties of web components to see how simulated users will react.
       </h4>
-      
+
       <button
         data-darwin-id="btn-cta-2"
-        style={{ position: 'absolute', left: 40, top: 240, width: 240, height: 60, backgroundColor: '#1bb556', borderRadius: '12px', color: 'white', fontWeight: 'bold', border: 'none', cursor: 'pointer'}}
+        style={{ position: 'absolute', left: 120, top: 470, width: 240, height: 60, backgroundColor: '#1bb556', borderRadius: '12px', color: 'white', fontWeight: 'bold', border: 'none', cursor: 'pointer'}}
       >
         Take the change today.
       </button>
