@@ -37,7 +37,7 @@ export default function App() {
       
       <h5
         data-darwin-id="description"
-        style={{ position: 'absolute', left: 40, top: 300, width: 140, height: 48, backgroundColor: '#ffffff', borderRadius: '8px', color: 'black', border: 'none', cursor: 'pointer' }}
+        style={{ position: 'absolute', left: 40, top: 300, width: 400, height: 48, backgroundColor: '#ffffff', borderRadius: '8px', color: 'black', border: 'none', cursor: 'pointer' }}
       >
         Some small details to describe what this project is about. We make changes to the properties of web components to see how simulated users will react.
       </h5>
