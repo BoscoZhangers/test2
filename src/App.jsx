@@ -1,6 +1,5 @@
 import React from 'react';
 import DarwinTracker from './DarwinTracker'; 
-import Navbar from './components/Navbar'
 
 export default function App() {
   return (
