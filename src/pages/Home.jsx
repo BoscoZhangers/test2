@@ -1,13 +1,118 @@
 import React from 'react';
 
-export default function Home() {
+export default function Home({ setPage }) {
   return (
-    <div style={{ padding: '20px' }}>
-      <h1 data-darwin-id="hero-text">Welcome Home</h1>
-      <p>This is the home page component.</p>
-      <button data-darwin-id="cta-btn" style={{ padding: '10px 20px', fontSize: '16px', background: 'blue', color: 'white' }}>
-        Click Me
-      </button>
+    <div style={{ 
+      maxWidth: '1200px', 
+      margin: '0 auto', 
+      padding: '80px 40px', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'space-between' 
+    }}>
+      
+      {/* Left Column: Text */}
+      <div style={{ flex: 1, paddingRight: '60px' }}>
+        <div 
+          data-darwin-id="badge-new"
+          style={{ 
+            display: 'inline-block', 
+            padding: '6px 12px', 
+            backgroundColor: '#f0f9ff', 
+            color: '#0284c7', 
+            borderRadius: '100px', 
+            fontSize: '12px', 
+            fontWeight: 'bold', 
+            marginBottom: '20px' 
+          }}
+        >
+          NEW FEATURES LAUNCHED 🚀
+        </div>
+
+        <h1 
+          data-darwin-id="hero-heading"
+          style={{ 
+            fontSize: '4.5rem', 
+            lineHeight: 1.1, 
+            fontWeight: '900', 
+            marginBottom: '24px', 
+            letterSpacing: '-2px' 
+          }}
+        >
+          Build faster. <br />
+          <span style={{ color: '#ccc' }}>Scale better.</span>
+        </h1>
+
+        <p 
+          data-darwin-id="hero-description"
+          style={{ 
+            fontSize: '1.25rem', 
+            color: '#666', 
+            lineHeight: 1.6, 
+            marginBottom: '40px', 
+            maxWidth: '500px' 
+          }}
+        >
+          We simulate user traffic on your components so you can optimize your UI before you even launch. Data-driven design starts here.
+        </p>
+
+        <div style={{ display: 'flex', gap: '15px' }}>
+          <button 
+            data-darwin-id="btn-cta-primary"
+            onClick={() => setPage('about')}
+            style={{ 
+              padding: '16px 32px', 
+              backgroundColor: '#000', 
+              color: 'white', 
+              fontSize: '16px', 
+              fontWeight: 'bold', 
+              border: 'none', 
+              borderRadius: '8px', 
+              cursor: 'pointer',
+              boxShadow: '0 10px 20px rgba(0,0,0,0.1)'
+            }}
+          >
+            Get Started
+          </button>
+          
+          <button 
+            data-darwin-id="btn-cta-secondary"
+            style={{ 
+              padding: '16px 32px', 
+              backgroundColor: '#fff', 
+              color: '#333', 
+              fontSize: '16px', 
+              fontWeight: 'bold', 
+              border: '1px solid #e5e5e5', 
+              borderRadius: '8px', 
+              cursor: 'pointer' 
+            }}
+          >
+            View Demo
+          </button>
+        </div>
+      </div>
+
+      {/* Right Column: Visual/Placeholder */}
+      <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+        <div 
+          data-darwin-id="hero-image-placeholder"
+          style={{
+            width: '100%',
+            height: '500px',
+            backgroundColor: '#f5f5f5',
+            borderRadius: '24px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '4rem',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.1)'
+          }}
+        >
+          ⚡️
+        </div>
+      </div>
+
     </div>
   );
 }
