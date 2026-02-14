@@ -55,6 +55,7 @@ export default function Navbar({ setPage, activePage }) {
         <button 
           data-darwin-id="nav-btn-login"
           style={{
+            marginTop: '-5px',
             marginLeft: '30px',
             padding: '8px 20px',
             backgroundColor: '#111',
