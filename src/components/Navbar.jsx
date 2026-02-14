@@ -1,27 +1,14 @@
 import React from 'react';
 
-export default function Navbar({ activePage, setPage }) {
-  const btnStyle = (page) => ({
-    background: activePage === page ? '#646cff' : 'transparent',
-    color: activePage === page ? 'white' : '#ccc',
-    border: '1px solid #646cff',
-    padding: '8px 16px',
-    cursor: 'pointer',
-    borderRadius: '4px'
-  });
-
+export default function Navbar({ setPage }) {
+  const style = { padding: '10px', background: '#333', color: '#fff', marginBottom: '20px' };
+  const btnStyle = { marginRight: '10px', cursor: 'pointer', background: '#555', border: 'none', color: '#fff', padding: '5px 10px' };
+  
   return (
-    <nav style={{ 
-      display: 'flex', 
-      gap: '10px', 
-      padding: '15px', 
-      background: '#1a1a1a', 
-      marginBottom: '20px',
-      borderBottom: '1px solid #333'
-    }}>
-      <button style={btnStyle('home')} onClick={() => setPage('home')}>Home</button>
-      <button style={btnStyle('about')} onClick={() => setPage('about')}>About</button>
-      <button style={btnStyle('contact')} onClick={() => setPage('contact')}>Contact</button>
+    <nav style={style} data-darwin-id="navbar">
+      <h3 style={{display:'inline-block', marginRight:'20px'}}>DarwinTest</h3>
+      <button style={btnStyle} onClick={() => setPage('home')}>Home</button>
+      <button style={btnStyle} onClick={() => setPage('about')}>About</button>
     </nav>
   );
 }
