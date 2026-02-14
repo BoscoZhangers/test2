@@ -1,7 +1,7 @@
 // src/DarwinTracker.jsx
 import { useEffect, useMemo } from 'react';
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, onDisconnect, set, increment, push, update } from "firebase/database";
+import { getDatabase, ref, onDisconnect, set, increment, push, update, remove } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCa-wRwPRlqvJzbVOpU88N-kOWXt5OzLuE", 
@@ -29,13 +29,18 @@ export default function DarwinTracker({ repoId }) {
   useEffect(() => {
     if (!repoId) return;
 
+    // 0. SANITIZE REPO ID
+    const safeRepoId = repoId.replace('/', '_').toLowerCase();
+
     // 1. Initialize User State
-    const userRef = ref(db, `swarm/${repoId}/active_sessions/${sessionId}`);
+    const userRef = ref(db, `swarm/${safeRepoId}/active_sessions/${sessionId}`);
+    
     update(userRef, { 
       last_seen: Date.now(), 
       target: null // Start wandering
     });
 
+    // Handle Tab Close / Crash (Fallback)
     onDisconnect(userRef).remove();
 
     const handleClick = (e) => {
@@ -45,17 +50,17 @@ export default function DarwinTracker({ repoId }) {
         const elementId = target.getAttribute('data-darwin-id');
         
         // 2. Increment Global Count
-        set(ref(db, `swarm/${repoId}/clicks/${elementId}`), increment(1));
+        set(ref(db, `swarm/${safeRepoId}/clicks/${elementId}`), increment(1));
         
         // 3. IMPORTANT: Save the target to the USER session
-        // This allows the dashboard to "sync" them immediately when you drop the bubble.
+        // This allows the dashboard to "sync" them immediately.
         update(userRef, {
           target: elementId,
           last_seen: Date.now()
         });
 
         // 4. Push Event History
-        push(ref(db, `swarm/${repoId}/events`), {
+        push(ref(db, `swarm/${safeRepoId}/events`), {
           type: 'click',
           elementId: elementId,
           userId: sessionId,
@@ -65,7 +70,13 @@ export default function DarwinTracker({ repoId }) {
     };
 
     window.addEventListener('click', handleClick);
-    return () => window.removeEventListener('click', handleClick);
+    
+    // CLEANUP: Remove user immediately when component unmounts
+    return () => {
+      window.removeEventListener('click', handleClick);
+      remove(userRef); 
+      onDisconnect(userRef).cancel();
+    };
   }, [repoId, sessionId]);
 
   return null;
