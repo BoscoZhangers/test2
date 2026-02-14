@@ -12,7 +12,7 @@ export default function About() {
       </p>
       
       <div style={{ marginTop: '50px', padding: '40px', background: '#f9f9f9', borderRadius: '16px' }}>
-        <h3 style={{ marginBottom: '20px' }}>Why use Darwin?</h3>
+        <h3 style={{ fontSize: '30px', marginBottom: '40px' }}>Why use Darwin?</h3>
         <ul style={{ listStyle: 'none', padding: 0, display: 'flex', justifyContent: 'center', gap: '40px' }}>
           <li data-darwin-id="feature-1">🎯 <strong>Precision Tracking</strong></li>
           <li data-darwin-id="feature-2">🤖 <strong>AI Simulation</strong></li>
