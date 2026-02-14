@@ -1,9 +1,12 @@
 import React from 'react';
 import DarwinTracker from './DarwinTracker'; 
+import Navbar from './components/Navbar'
 
 export default function App() {
   return (
     <div style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden', backgroundColor: 'white' }}>
+      
+      <Navbar/>
       
       {/* 1. INITIALIZE THE TRACKER */}
       {/* Replace 'BoscoZhangers_darwin-test-site' with your unique repo ID */}
