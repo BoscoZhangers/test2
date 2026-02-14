@@ -13,22 +13,6 @@ export default function Home({ setPage }) {
     }}>
       
       {/* Left Column: Text */}
-      <div style={{ flex: 1, paddingRight: '60px' }}>
-        <div 
-          data-darwin-id="badge-new"
-          style={{ 
-            display: 'inline-block', 
-            padding: '6px 12px', 
-            backgroundColor: '#f0f9ff', 
-            color: '#0284c7', 
-            borderRadius: '100px', 
-            fontSize: '12px', 
-            fontWeight: 'bold', 
-            marginBottom: '20px' 
-          }}
-        >
-          NEW FEATURES LAUNCHED 🚀
-        </div>
 
         <h1 
           data-darwin-id="hero-heading"
