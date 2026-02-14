@@ -1,4 +1,5 @@
 import React from 'react';
+import heroImg from '../assets/hero.svg'; // Changed from .png to .svg
 
 export default function Home({ setPage }) {
   return (
@@ -93,23 +94,24 @@ export default function Home({ setPage }) {
         </div>
       </div>
 
-      {/* Right Column: Visual/Placeholder */}
+      {/* Right Column: IMAGE */}
       <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
         <div 
-          data-darwin-id="hero-image-placeholder"
+          data-darwin-id="hero-image-container"
           style={{
             width: '100%',
-            height: '500px',
-            backgroundColor: '#f5f5f5',
+            // Simple shadow and rounding to make it look nice
             borderRadius: '24px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '4rem',
-            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.1)'
+            overflow: 'hidden',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.2)'
           }}
         >
-          ⚡️
+          {/* 2. USE THE IMAGE */}
+          <img 
+            src={heroImg} 
+            alt="Dashboard Preview" 
+            style={{ width: '100%', height: 'auto', display: 'block' }} 
+          />
         </div>
       </div>
 

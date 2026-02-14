@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../assets/logo.svg'; // Changed from .png to .svg
 
 export default function Navbar({ setPage, activePage }) {
   const navStyle = {
@@ -14,15 +15,6 @@ export default function Navbar({ setPage, activePage }) {
     zIndex: 100
   };
 
-  const logoStyle = {
-    fontSize: '24px',
-    fontWeight: '800',
-    background: 'linear-gradient(45deg, #111, #444)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    cursor: 'pointer'
-  };
-
   const linkStyle = (page) => ({
     marginLeft: '30px',
     textDecoration: 'none',
@@ -34,12 +26,14 @@ export default function Navbar({ setPage, activePage }) {
 
   return (
     <nav style={navStyle} data-darwin-id="navbar-container">
+      {/* 2. USE THE IMAGE VARIABLE IN SRC */}
       <div 
         data-darwin-id="nav-logo" 
-        style={logoStyle} 
         onClick={() => setPage('home')}
+        style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }}
       >
-        Startup.io
+        <img src={logo} alt="Startup.io Logo" style={{ height: '40px', width: 'auto' }} />
+        <span style={{ fontWeight: '800', fontSize: '20px' }}>Startup.io</span>
       </div>
       
       <div style={{ display: 'flex' }}>
