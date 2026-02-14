@@ -13,6 +13,7 @@ export default function Home({ setPage }) {
     }}>
       
       {/* Left Column: Text */}
+      <div style={{ flex: 1, paddingRight: '60px' }}>
 
         <h1 
           data-darwin-id="hero-heading"
