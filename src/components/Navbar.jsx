@@ -33,7 +33,7 @@ export default function Navbar({ setPage, activePage }) {
         onClick={() => setPage('home')}
         style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }}
       >
-        <img src={logo} alt="Startup.io Logo" style={{ height: '40px', width: 'auto' }} />
+        <img src={logo} alt="Startup.io Logo" style={{ height: '60px', width: 'auto' }} />
         <span style={{ fontWeight: '800', fontSize: '20px' }}>Startup.io</span>
       </div>
       
