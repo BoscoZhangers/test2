@@ -1,5 +1,6 @@
 import React from 'react';
-import logo from '../assets/logo.svg'; // Changed from .png to .svg
+// 1. IMPORT THE IMAGE
+import logo from '../assets/logo.png'; 
 
 export default function Navbar({ setPage, activePage }) {
   const navStyle = {
